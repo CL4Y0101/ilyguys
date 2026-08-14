@@ -1,192 +1,307 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#080a18">
-  <meta name="description" content="A digital time capsule for Byeong Yoon, Jueun, Soo Ah and Donggyun — Jember, August 2026.">
-  <title>Until We Meet Again — Jember, 2026</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#05060b">
+  <title>Until We Meet Again — Jember 2026</title>
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="noise"></div>
-  <div class="stars"></div>
-  <div class="progress"><span id="progressBar"></span></div>
 
-  <header class="nav">
-    <a href="#home" class="brand">JEMBER<span>·</span>2026</a>
-    <button class="music-btn" id="musicBtn" aria-label="Toggle music">
-      <span class="music-icon">♫</span><span id="musicText">Music</span>
-    </button>
-  </header>
+  <!-- Preloader & Overlay Elements -->
+  <div id="loader">
+    <div>JEMBER</div>
+    <span></span>
+    <small>AUGUST 2026</small>
+  </div>
+  <div class="grain"></div>
+  <div class="progress"><i></i></div>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#home" class="logo">JEMBER <b>·</b> 2026</a>
+    <div class="nav-actions">
+      <div class="langs">
+        <button data-lang="en" class="active">EN</button>
+        <button data-lang="ko">한국어</button>
+      </div>
+      <button id="soundBtn" class="sound">♫ <span data-i18n="sound">SOUND ON</span></button>
+    </div>
+  </nav>
 
   <main>
-    <section class="hero" id="home">
-      <div class="hero-orbit"></div>
-      <div class="hero-content reveal">
-        <p class="eyebrow">A DIGITAL TIME CAPSULE · AUGUST 2026</p>
-        <h1>Until<br><em>We Meet Again.</em></h1>
-        <p class="hero-copy">For the four people who came to Jember as visitors, and somehow left as friends.</p>
-        <a href="#letter" class="cta">Open the memory <span>↓</span></a>
+    <!-- Hero Section -->
+    <section class="hero scene" id="home">
+      <div class="hero-bg"></div>
+      <div class="hero-shade"></div>
+      <div class="hero-copy reveal">
+        <p class="kicker" data-i18n="heroKicker">A MEMORY CAPSULE</p>
+        <h1 data-i18n="heroTitle">Until<br><em>We Meet Again.</em></h1>
+        <p class="sub" data-i18n="heroSub">
+          For four people who arrived in Jember as visitors<br>and somehow left as friends.
+        </p>
+        <a href="#chapter1" class="enter" data-i18n="begin">BEGIN THE MEMORY ↓</a>
       </div>
-      <div class="hero-date">JEMBER, INDONESIA<br><span>08 · 2026</span></div>
-      <div class="scroll-hint">SCROLL TO REMEMBER <span></span></div>
+      <div class="hero-meta">JEMBER, INDONESIA <span>14 · 08 · 2026</span></div>
     </section>
 
-    <section class="intro section" id="letter">
-      <div class="section-label">01 / THE LETTER</div>
-      <div class="letter-grid">
+    <!-- Chapter 01: Intro -->
+    <section class="chapter" id="chapter1">
+      <div class="chapter-no">CHAPTER 01</div>
+      <div class="two-col">
         <div class="reveal">
-          <p class="eyebrow">DEAR BYEONG YOON, JUEUN, SOO AH & DONGGYUN</p>
-          <h2>Some chapters<br>are too short.</h2>
+          <p class="kicker" data-i18n="introKicker">IT WASN'T SUPPOSED TO BE THIS SPECIAL</p>
+          <h2 data-i18n="introTitle">Four people.<br><em>One short chapter.</em></h2>
         </div>
-        <div class="letter reveal">
-          <p>I honestly don't know how to say goodbye.</p>
-          <p>I thought this would simply be a project with students from Korea. A few days of working together, building something, taking some photos, then everyone goes home.</p>
-          <p>But somewhere between the awkward conversations, the jokes, the food, the project, and all those small moments, you became people I genuinely don't want to say goodbye to.</p>
-          <p>So I made this little place on the internet.</p>
-          <p>Not because a website can replace being together — it can't. But because I wanted there to be somewhere we can return to when these days start feeling far away.</p>
-          <p class="signature">— Aditya<br><span>Jember · August 14, 2026</span></p>
-        </div>
+        <div class="prose reveal" data-i18n-html="introText"></div>
       </div>
     </section>
 
-    <section class="people section">
-      <div class="section-label">02 / THE FOUR</div>
-      <div class="section-heading reveal">
-        <p class="eyebrow">FOUR PEOPLE · ONE UNFORGETTABLE CHAPTER</p>
-        <h2>To the four of you.</h2>
+    <!-- Chapter 02: People -->
+    <section class="chapter people">
+      <div class="chapter-no">CHAPTER 02</div>
+      <div class="heading reveal">
+        <p class="kicker" data-i18n="peopleKicker">THE PEOPLE I WILL REMEMBER</p>
+        <h2 data-i18n="peopleTitle">Meet the four.</h2>
       </div>
+
       <div class="people-grid">
-        <button class="person-card reveal" data-person="byeong">
-          <span class="person-number">01</span><span class="person-flag">🇰🇷</span>
-          <h3>Byeong Yoon</h3><p>Click to open</p><span class="arrow">↗</span>
+        <button class="person reveal" data-person="byeong">
+          <div class="portrait" data-photo="byeong-yoon"></div>
+          <div class="person-shade"></div>
+          <span>01</span>
+          <div>
+            <small>BAE</small>
+            <h3>Bae Byeong Yoon</h3>
+            <p data-i18n="openLetter">Open his letter ↗</p>
+          </div>
         </button>
-        <button class="person-card reveal" data-person="jueun">
-          <span class="person-number">02</span><span class="person-flag">🇰🇷</span>
-          <h3>Jueun</h3><p>Click to open</p><span class="arrow">↗</span>
+
+        <button class="person reveal" data-person="jueun">
+          <div class="portrait" data-photo="jueun"></div>
+          <div class="person-shade"></div>
+          <span>02</span>
+          <div>
+            <small>LEE</small>
+            <h3>Lee Jueun</h3>
+            <p data-i18n="openLetterF">Open her letter ↗</p>
+          </div>
         </button>
-        <button class="person-card reveal" data-person="sooah">
-          <span class="person-number">03</span><span class="person-flag">🇰🇷</span>
-          <h3>Soo Ah</h3><p>Click to open</p><span class="arrow">↗</span>
+
+        <button class="person reveal" data-person="sooah">
+          <div class="portrait" data-photo="soo-ah"></div>
+          <div class="person-shade"></div>
+          <span>03</span>
+          <div>
+            <small>KANG</small>
+            <h3>Kang Soo Ah</h3>
+            <p data-i18n="openLetterF">Open her letter ↗</p>
+          </div>
         </button>
-        <button class="person-card reveal" data-person="donggyun">
-          <span class="person-number">04</span><span class="person-flag">🇰🇷</span>
-          <h3>Donggyun</h3><p>Click to open</p><span class="arrow">↗</span>
+
+        <button class="person reveal" data-person="donggyun">
+          <div class="portrait" data-photo="dongkyun"></div>
+          <div class="person-shade"></div>
+          <span>04</span>
+          <div>
+            <small>AN</small>
+            <h3>An Dongkyun</h3>
+            <p data-i18n="openLetter">Open his letter ↗</p>
+          </div>
+        </button>
+      </div>
+
+      <p class="note" data-i18n="photoNote">Put their portraits in assets/photos/.</p>
+    </section>
+
+    <!-- Chapter 03: Memories -->
+    <section class="chapter">
+      <div class="chapter-no">CHAPTER 03</div>
+      <div class="heading reveal">
+        <p class="kicker" data-i18n="daysKicker">THE DAYS WE HAD</p>
+        <h2 data-i18n="daysTitle">Moments become memories<br>when you know they're ending.</h2>
+      </div>
+
+      <div class="memories">
+        <article class="memory reveal">
+          <div class="num">01</div>
+          <div>
+            <small data-i18n="day1">FIRST DAY</small>
+            <h3 data-i18n="day1title">Strangers.</h3>
+            <p data-i18n="day1text">Different countries. Different languages. Somehow, we started talking.</p>
+          </div>
+          <div class="memory-img" data-photo="day-01"></div>
+        </article>
+
+        <article class="memory reverse reveal">
+          <div class="num">02</div>
+          <div>
+            <small data-i18n="day2">THE PROJECT</small>
+            <h3 data-i18n="day2title">Building together.</h3>
+            <p data-i18n="day2text">Jember Smart Cooling Mist. One idea, many hands, countless little moments.</p>
+          </div>
+          <div class="memory-img" data-photo="project"></div>
+        </article>
+
+        <article class="memory reveal">
+          <div class="num">03</div>
+          <div>
+            <small data-i18n="day3">THE LITTLE THINGS</small>
+            <h3 data-i18n="day3title">Laughing.</h3>
+            <p data-i18n="day3text">The conversations that didn't need perfect language to make sense.</p>
+          </div>
+          <div class="memory-img" data-photo="day-03"></div>
+        </article>
+
+        <article class="memory reverse reveal">
+          <div class="num">04</div>
+          <div>
+            <small data-i18n="day4">THE LAST NIGHT</small>
+            <h3 data-i18n="day4title">Not ready.</h3>
+            <p data-i18n="day4text">Some goodbyes arrive before we're ready for them.</p>
+          </div>
+          <div class="memory-img" data-photo="day-04"></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Chapter 04: Cinema / Video -->
+    <section class="cinema">
+      <video id="memoryVideo" muted loop playsinline poster="assets/photos/group/group.jpg">
+        <source src="assets/video/memory.mp4" type="video/mp4">
+      </video>
+      <div class="cinema-shade"></div>
+      <div class="cinema-content reveal">
+        <p class="kicker" data-i18n="videoKicker">CHAPTER 04 · THE MEMORY REEL</p>
+        <button id="videoBtn">▶</button>
+        <h2 data-i18n="videoTitle">If you ever<br><em>miss Jember.</em></h2>
+        <p data-i18n="videoNote">Put your short video montage in assets/video/memory.mp4.</p>
+      </div>
+    </section>
+
+    <!-- Chapter 05: Distance -->
+    <section class="chapter distance">
+      <div class="chapter-no">CHAPTER 05</div>
+      <div class="heading reveal">
+        <p class="kicker" data-i18n="distanceKicker">AFTER TOMORROW</p>
+        <h2 data-i18n="distanceTitle">Different countries.<br>Same memory.</h2>
+      </div>
+
+      <div class="map reveal">
+        <div>
+          <b>🇮🇩</b>
+          <strong>JEMBER</strong>
+          <small>INDONESIA</small>
+        </div>
+        <section>
+          <i></i>
+          <span>✈</span>
+          <small>≈ 5,000 KM</small>
+        </section>
+        <div>
+          <b>🇰🇷</b>
+          <strong>KOREA</strong>
+          <small>SOUTH KOREA</small>
+        </div>
+      </div>
+
+      <blockquote class="reveal" data-i18n-html="distanceQuote"></blockquote>
+    </section>
+
+    <!-- Chapter 06: Letters -->
+    <section class="chapter letters">
+      <div class="chapter-no">CHAPTER 06</div>
+      <div class="heading reveal">
+        <p class="kicker" data-i18n="lettersKicker">WORDS I WANTED YOU TO HAVE</p>
+        <h2 data-i18n="lettersTitle">Four letters.<br>One feeling.</h2>
+      </div>
+
+      <div class="letter-grid">
+        <button class="letter reveal" data-person="byeong">
+          <span>01</span>
+          <b>Bae Byeong Yoon</b>
+          <i data-i18n="read">Read letter ↗</i>
+        </button>
+        <button class="letter reveal" data-person="jueun">
+          <span>02</span>
+          <b>Lee Jueun</b>
+          <i data-i18n="read">Read letter ↗</i>
+        </button>
+        <button class="letter reveal" data-person="sooah">
+          <span>03</span>
+          <b>Kang Soo Ah</b>
+          <i data-i18n="read">Read letter ↗</i>
+        </button>
+        <button class="letter reveal" data-person="donggyun">
+          <span>04</span>
+          <b>An Dongkyun</b>
+          <i data-i18n="read">Read letter ↗</i>
         </button>
       </div>
     </section>
 
-    <section class="timeline section">
-      <div class="section-label">03 / OUR DAYS</div>
-      <div class="section-heading reveal">
-        <p class="eyebrow">A FEW DAYS WE WISH COULD HAVE LASTED LONGER</p>
-        <h2>Little moments.<br>Big memories.</h2>
-      </div>
-      <div class="timeline-list">
-        <article class="timeline-item reveal">
-          <div class="timeline-dot"></div><div class="timeline-date">DAY 01</div>
-          <div class="timeline-content"><h3>First meeting</h3><p>Strangers from two countries, suddenly trying to understand each other.</p><div class="photo-slot">YOUR PHOTO HERE</div></div>
-        </article>
-        <article class="timeline-item reveal">
-          <div class="timeline-dot"></div><div class="timeline-date">DAY 02</div>
-          <div class="timeline-content"><h3>Building something together</h3><p>Jember Smart Cooling Mist — one project, many hands, and a lot of moments between the work.</p><div class="photo-slot">YOUR PROJECT PHOTO HERE</div></div>
-        </article>
-        <article class="timeline-item reveal">
-          <div class="timeline-dot"></div><div class="timeline-date">DAY 03</div>
-          <div class="timeline-content"><h3>The laughs</h3><p>The conversations that didn't always need perfect English or Korean to make sense.</p><div class="photo-slot">YOUR GROUP PHOTO HERE</div></div>
-        </article>
-        <article class="timeline-item reveal">
-          <div class="timeline-dot"></div><div class="timeline-date">DAY 04</div>
-          <div class="timeline-content"><h3>The ordinary moments</h3><p>The meals, walks, random jokes and tiny things that we probably won't realize we miss until later.</p><div class="photo-slot">YOUR MEMORY HERE</div></div>
-        </article>
-        <article class="timeline-item reveal">
-          <div class="timeline-dot"></div><div class="timeline-date">DAY 05</div>
-          <div class="timeline-content"><h3>Tomorrow</h3><p>You go home. And Jember becomes a memory you carry somewhere else.</p><div class="final-photo">08 · 2026</div></div>
-        </article>
-      </div>
-    </section>
-
-    <section class="distance section">
-      <div class="section-label">04 / THE DISTANCE</div>
-      <div class="distance-wrap reveal">
-        <div class="place">
-          <span>🇮🇩</span><strong>JEMBER</strong><small>INDONESIA</small>
-        </div>
-        <div class="route">
-          <div class="route-line"><i></i><i></i><i></i><i></i><i></i></div>
-          <div class="plane">✈</div>
-          <span>≈ 5,000 KM</span>
-        </div>
-        <div class="place">
-          <span>🇰🇷</span><strong>KOREA</strong><small>SOUTH KOREA</small>
-        </div>
-      </div>
-      <blockquote class="reveal">“Distance can separate places.<br><em>It doesn't have to separate people.</em>”</blockquote>
-    </section>
-
-    <section class="video-section section">
-      <div class="section-label">05 / IF YOU MISS US</div>
-      <div class="memory-screen reveal">
-        <div class="memory-bg"></div>
-        <div class="memory-overlay"></div>
-        <div class="memory-center">
-          <p class="eyebrow">PRESS PLAY</p>
-          <button class="play-btn" id="memoryBtn"><span>▶</span></button>
-          <h2>Our memories.</h2>
-          <p>Replace the placeholders with your photos and videos.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="future section">
-      <div class="section-label">06 / 10 YEARS FROM NOW</div>
+    <!-- Chapter 07: Future -->
+    <section class="chapter future">
+      <div class="future-glow"></div>
       <div class="future-content reveal">
-        <p class="eyebrow">IF YOU ARE READING THIS YEARS LATER</p>
-        <h2>Did we keep<br>our promise?</h2>
-        <p class="future-copy">Maybe we met again. Maybe life got busy. Maybe we became completely different people.</p>
-        <p class="future-copy">Whatever happened, I hope this page reminds you of one thing:</p>
-        <p class="future-strong">For a little while, our paths crossed.<br>And that mattered.</p>
-        <div class="future-counter"><span id="yearsCounter">10</span><small>YEARS<br>LATER</small></div>
+        <p class="kicker" data-i18n="futureKicker">CHAPTER 07 · OPEN THIS YEARS FROM NOW</p>
+        <h2 data-i18n="futureTitle">10 years later…<br><em>where are we now?</em></h2>
+        <div class="future-text" data-i18n-html="futureText"></div>
+        <div class="year">
+          2036 <small>OPENED<br>FROM THE FUTURE</small>
+        </div>
       </div>
     </section>
 
-    <section class="goodbye section">
-      <div class="goodbye-content reveal">
-        <p class="eyebrow">ONE LAST THING</p>
-        <h2>This isn't<br><em>goodbye.</em></h2>
-        <p class="goodbye-text">It's just “see you again.”</p>
-        <div class="names">BYEONG YOON · JUEUN · SOO AH · DONGGYUN</div>
-        <div class="date-line">JEMBER · INDONESIA · 14 AUGUST 2026</div>
-        <button class="remember-btn" id="rememberBtn">Keep this memory ♥</button>
+    <!-- Final Section -->
+    <section class="final">
+      <div class="final-bg"></div>
+      <div class="final-shade"></div>
+      <div class="final-content reveal">
+        <p class="kicker" data-i18n="finalKicker">ONE LAST THING</p>
+        <h2 data-i18n="finalTitle">This isn't<br><em>goodbye.</em></h2>
+        <p class="korean">우리 다시 만나자.</p>
+        <p class="translation" data-i18n="translation">Let's meet again.</p>
+        <div class="names">BAE BYEONG YOON · LEE JUEUN · KANG SOO AH · AN DONGKYUN</div>
+        <div class="final-date">JEMBER · INDONESIA · 14 AUGUST 2026</div>
+        <button id="rememberBtn" data-i18n="remember">♥ KEEP THIS MEMORY</button>
       </div>
     </section>
   </main>
 
+  <!-- Footer -->
   <footer>
-    <p>Made with memories, not code.</p>
-    <p>Jember · 2026</p>
+    <span data-i18n="footer1">Made with memories, not code.</span>
+    <span>JEMBER · 2026</span>
   </footer>
 
-  <div class="modal" id="personModal" aria-hidden="true">
-    <div class="modal-backdrop"></div>
-    <div class="modal-card">
-      <button class="close-modal" id="closeModal">×</button>
-      <span class="modal-flag" id="modalFlag">🇰🇷</span>
-      <p class="eyebrow" id="modalEyebrow">A LETTER</p>
-      <h2 id="modalName">Name</h2>
-      <div class="modal-letter" id="modalLetter"></div>
+  <!-- Modal -->
+  <div class="modal" id="modal">
+    <div class="modal-bg"></div>
+    <div class="modal-box">
+      <button id="close">×</button>
+      <small data-i18n="letterFor">A LETTER FOR</small>
+      <h2 id="modalName"></h2>
+      <div id="modalText"></div>
+      <em>— Aditya · Jember 2026</em>
     </div>
   </div>
 
-  <div class="toast" id="toast">Memory saved in this browser ♥</div>
-  <audio id="bgMusic" loop preload="none">
-    <!-- Put your own MP3 at assets/memory.mp3 -->
-    <source src="assets/memory.mp3" type="audio/mpeg">
+  <!-- Toast & Audio Player -->
+  <div id="toast"></div>
+  <audio id="audio" loop>
+    <source src="assets/audio/memory.mp3" type="audio/mpeg">
   </audio>
+
+  <!-- Script -->
   <script src="script.js"></script>
 </body>
 </html>
