@@ -127,7 +127,7 @@ const T = {
 };
 
 /* ==========================================================================
-   2. PERSONAL LETTERS DATA
+   2. LETTERS DATA
    ========================================================================== */
 const L = {
   byeong: {
@@ -197,89 +197,95 @@ const L = {
 };
 
 /* ==========================================================================
-   3. HELPER FUNCTIONS & STATE
+   3. HELPERS & RENDERING
    ========================================================================== */
 let lang = localStorage.getItem("memoryLang") || "en";
-const $ = (selector) => document.querySelector(selector);
-const $$ = (selector) => document.querySelectorAll(selector);
+const $ = (s) => document.querySelector(s);
+const $$ = (s) => document.querySelectorAll(s);
 
-// Render UI based on selected language
 function render() {
   const dict = T[lang];
   document.documentElement.lang = lang;
 
   $$("[data-i18n]").forEach((el) => {
-    const key = el.dataset.i18n;
-    if (dict[key] != null) el.innerHTML = dict[key];
+    const k = el.dataset.i18n;
+    if (dict[k] != null) el.innerHTML = dict[k];
   });
 
   $$("[data-i18n-html]").forEach((el) => {
-    const key = el.dataset.i18nHtml;
-    if (dict[key] != null) el.innerHTML = dict[key];
+    const k = el.dataset.i18nHtml;
+    if (dict[k] != null) el.innerHTML = dict[k];
   });
 
-  $$(".langs button").forEach((btn) => {
-    btn.classList.toggle("active", btn.dataset.lang === lang);
+  $$(".langs button").forEach((b) => {
+    b.classList.toggle("active", b.dataset.lang === lang);
   });
 }
 
-// Language switch handlers
-$$(".langs button").forEach((btn) => {
-  btn.onclick = () => {
-    lang = btn.dataset.lang;
-    localStorage.setItem("memoryLang", lang);
-    render();
-  };
-});
-
-render();
-
 /* ==========================================================================
-   4. PAGE LOAD & SCROLL ANIMATIONS
+   4. INIT & EVENTS
    ========================================================================== */
-window.addEventListener("load", () => {
-  setTimeout(() => document.body.classList.add("ready"), 500);
-});
+function init() {
+  render();
 
-// Scroll Reveal Observer
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-      }
-    });
-  },
-  { threshold: 0.12 }
-);
+  // Language Switch
+  $$(".langs button").forEach((b) => {
+    b.onclick = () => {
+      lang = b.dataset.lang;
+      localStorage.setItem("memoryLang", lang);
+      render();
+    };
+  });
 
-$$(".reveal").forEach((el) => revealObserver.observe(el));
+  // Images Auto Background Binding
+  $$(".portrait").forEach((e) => {
+    e.style.backgroundImage = `url("assets/photos/${e.dataset.photo}/${e.dataset.photo}.jpg")`;
+  });
+  $$(".memory-img").forEach((e) => {
+    e.style.backgroundImage = `url("assets/photos/group/${e.dataset.photo}.jpg")`;
+  });
 
-// Progress Bar on Scroll
-window.addEventListener("scroll", () => {
-  const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
-  const progressPercent = (window.scrollY / scrollTotal) * 100;
-  $(".progress i").style.width = `${progressPercent}%`;
-});
+  // Reveal On Scroll
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) e.target.classList.add("visible");
+      });
+    },
+    { threshold: 0.1 }
+  );
+  $$(".reveal").forEach((el) => observer.observe(el));
 
-// Dynamic Background Images Setup
-$$(".portrait").forEach((el) => {
-  el.style.backgroundImage = `url("assets/photos/${el.dataset.photo}/${el.dataset.photo}.jpg")`;
-});
+  // Progress Bar
+  window.addEventListener("scroll", () => {
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = maxScroll > 0 ? (window.scrollY / maxScroll) * 100 : 0;
+    const progressEl = $(".progress i");
+    if (progressEl) progressEl.style.width = `${pct}%`;
+  });
 
-$$(".memory-img").forEach((el) => {
-  el.style.backgroundImage = `url("assets/photos/group/${el.dataset.photo}.jpg")`;
-});
+  // Remove Loader Safely
+  setTimeout(() => {
+    document.body.classList.add("ready");
+  }, 350);
+}
+
+// Check DOM ready
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", init);
+} else {
+  init();
+}
 
 /* ==========================================================================
-   5. MODAL LOGIC (Letters)
+   5. MODAL LOGIC
    ========================================================================== */
 const modal = $("#modal");
 
-function openLetter(personKey) {
-  const letterData = L[personKey][lang];
-  $("#modalName").textContent = letterData[0];
-  $("#modalText").innerHTML = letterData[1];
+function openLetter(key) {
+  const data = L[key][lang];
+  $("#modalName").textContent = data[0];
+  $("#modalText").innerHTML = data[1];
   modal.classList.add("open");
   document.body.style.overflow = "hidden";
 }
@@ -297,49 +303,40 @@ $("#close").onclick = closeLetter;
 $(".modal-bg").onclick = closeLetter;
 
 /* ==========================================================================
-   6. MEDIA CONTROLS & INTERACTION
+   6. AUDIO, VIDEO & TOAST
    ========================================================================== */
-// Background Audio Control
 const audio = $("#audio");
 $("#soundBtn").onclick = async () => {
   if (audio.paused) {
     try {
       await audio.play();
-    } catch (err) {
-      console.warn("Audio play prevented:", err);
-    }
+    } catch {}
   } else {
     audio.pause();
   }
-  
   $("#soundBtn span").textContent = audio.paused
     ? T[lang].sound
     : (lang === "ko" ? "소리 끄기" : "SOUND OFF");
 };
 
-// Video Montage Control
 $("#videoBtn").onclick = async () => {
-  const video = $("#memoryVideo");
-  if (video.paused) {
+  const v = $("#memoryVideo");
+  if (v.paused) {
     try {
-      await video.play();
+      await v.play();
       $("#videoBtn").textContent = "❚❚";
-    } catch (err) {
-      console.warn("Video play prevented:", err);
-    }
+    } catch {}
   } else {
-    video.pause();
+    v.pause();
     $("#videoBtn").textContent = "▶";
   }
 };
 
-// Toast Notification Button
 $("#rememberBtn").onclick = () => {
   const toast = $("#toast");
   toast.textContent = lang === "ko" 
     ? "이 기억을 오래 간직해줘 ♥" 
     : "This memory is staying with you ♥";
-    
   toast.classList.add("show");
-  setTimeout(() => toast.classList.remove("show"), 2600);
+  setTimeout(() => toast.classList.remove("show"), 2500);
 };
