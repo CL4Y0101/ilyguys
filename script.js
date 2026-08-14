@@ -126,14 +126,14 @@ const T = {
 const L = {
   byeong: {
     en: [
-      "Bae Byeong Yoon",
+      "Bae Byeongyun",
       `<p>Thank you for being part of these days in Jember.</p>
        <p>I hope you remember the small things as much as the big ones — the project, the conversations, the laughs, and all the moments we didn't plan.</p>
        <p>I'm really glad our paths crossed here.</p>
-       <p>Take care, Byeong Yoon. Let's meet again someday.</p>`
+       <p>Take care, Byeongyun. Let's meet again someday.</p>`
     ],
     ko: [
-      "Bae Byeong Yoon",
+      "Bae Byeongyun",
       `<p>이번 Jember에서 함께해줘서 정말 고마워.</p>
        <p>프로젝트도, 같이 웃었던 순간도, 별것 아닌 이야기들도 오래 기억했으면 좋겠어.</p>
        <p>서로 다시 각자의 일상으로 돌아가겠지만, 우리가 여기서 만났다는 건 변하지 않으니까.</p>
@@ -183,7 +183,7 @@ const L = {
     ko: [
       "An Dongkyun",
       `<p>Jember에서 만나게 돼서 정말 좋았어.</p>
-       <p>몇 년이 지나면 모든 대화나 하루하루를 다 기억하지 못할 수도 있겠지. 그래도 우리가 함께 있었던 그 느낌은 기억했으면 좋겠어.</p>
+       <p>몇 연이 지나면 모든 대화나 하루하루를 다 기억하지 못할 수도 있겠지. 그래도 우리가 함께 있었던 그 느낌은 기억했으면 좋겠어.</p>
        <p>이 짧은 이야기에 함께해줘서 고마워.</p>
        <p>Dongkyun, 언젠가 세계 어딘가에서 다시 만나자.</p>`
     ]
