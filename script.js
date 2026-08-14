@@ -158,18 +158,18 @@ const L = {
   },
   sooah: {
     en: [
-      "Kang Soo Ah",
+      "Kang Suah",
       `<p>It feels strange knowing that you're going home tomorrow.</p>
        <p>There are probably a hundred things we could say, but maybe the simplest one is enough: thank you.</p>
        <p>Thank you for sharing your time and becoming part of a chapter I'll remember for a long time.</p>
-       <p>Don't let the distance make this memory feel small, Soo Ah.</p>`
+       <p>Don't let the distance make this memory feel small, Suah.</p>`
     ],
     ko: [
-      "Kang Soo Ah",
+      "Kang Suah",
       `<p>내일이면 돌아간다고 생각하니까 조금 이상하고 아쉽다.</p>
        <p>하고 싶은 말은 많지만 결국 제일 하고 싶은 말은 고마웠다는 말인 것 같아.</p>
        <p>같이 시간을 보내고, 이 짧은 이야기에 함께해줘서 정말 고마워.</p>
-       <p>거리가 멀어져도 이 기억만큼은 작아지지 않았으면 좋겠어, Soo Ah.</p>`
+       <p>거리가 멀어져도 이 기억만큼은 작아지지 않았으면 좋겠어, Suah.</p>`
     ]
   },
   donggyun: {
