@@ -335,6 +335,15 @@ $("#soundBtn").onclick = async () => {
 
 $("#videoBtn").onclick = async () => {
   const v = $("#memoryVideo");
+  
+  v.muted = false;
+
+  const bgAudio = $("#audio");
+  if (!bgAudio.paused) {
+    bgAudio.pause();
+    $("#soundBtn span").textContent = T[lang].sound;
+  }
+
   if (v.paused) {
     try {
       await v.play();
