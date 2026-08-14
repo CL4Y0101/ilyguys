@@ -1,28 +1,45 @@
-# Until We Meet Again — Jember 2026
+# 💌 A Memory Capsule: Until We Meet Again — Jember 2026
 
-A cinematic farewell / digital time capsule website for Byeong Yoon, Jueun, Soo Ah and Donggyun.
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
-## Quick setup
+Sebuah kapsul memori digital berbentuk *website* interaktif yang didedikasikan untuk empat orang teman yang bertemu di Jember, Indonesia pada Agustus 2026. Berawal dari proyek *Jember Smart Cooling Mist*, hingga akhirnya menjadi sebuah pertemanan yang tak terlupakan.
 
-1. Open `index.html` in a browser.
-2. Replace the placeholder photo boxes with your real photos.
-3. Put your background song at:
-   `assets/memory.mp3`
-4. If you want a real video, put it in `assets/memory.mp4` and replace the memory screen in `index.html` with a `<video controls ...>` element.
-5. Upload the folder to GitHub Pages, Netlify, Vercel, Cloudflare Pages, or any normal static hosting.
+Dibuat dengan memori, bukan sekadar kode. ✨
 
-## Personalize the four letters
+## ✨ Fitur Utama (Features)
 
-Open `script.js` and edit the `people` object. The current letters are intentionally generic so you can replace them with memories that only you and each person understand.
+- 🌐 **Bilingual (English & Korean):** Dukungan dua bahasa agar pesan dapat tersampaikan dengan baik.
+- 🎵 **Immersive Audio & Video:** Dilengkapi dengan *background music* dan halaman khusus untuk memutar video montase kenangan.
+- 🔒 **Password-Protected Letters:** Surat personal untuk masing-masing orang yang hanya bisa dibuka dengan *password* khusus (nama panggilan/marga).
+- ✨ **Scroll Animations:** Efek *reveal* yang halus (fade-in & slide-up) saat halaman di-*scroll* untuk memberikan kesan sinematik.
+- 📱 **Fully Responsive:** Tampilan rapi dan proporsional di semua perangkat (Desktop, Tablet, & Smartphone).
 
-## Important
+## 📂 Struktur Folder Aset (Asset Structure)
 
-The Google Fonts import requires internet access. The website still works without it, but will fall back to the default font.
+Agar *website* ini berjalan sempurna, pastikan kamu meletakkan file media (foto, video, audio) di dalam folder `assets/` dengan struktur penamaan yang tepat seperti di bawah ini:
 
-## Suggested final touches
-
-- Add 15–30 real photos.
-- Add 1 short video montage.
-- Add one song that you all associate with the trip.
-- Add inside jokes / specific memories to each person's letter.
-- Add a group photo as the final background.
+```text
+📁 assets/
+ ├── 📁 audio/
+ │    └── memory.mp3                # Background music
+ ├── 📁 video/
+ │    └── memory.mp4                # Video montase kenangan
+ └── 📁 photos/
+      ├── 📁 group/                 # Foto-foto grup/kegiatan
+      │    ├── hero.jpg
+      │    ├── final.jpg
+      │    ├── day-01.jpg
+      │    ├── project.jpg
+      │    ├── day-03.jpg
+      │    ├── day-04.jpg
+      │    └── group.jpg            # Thumbnail untuk video
+      ├── flag-id.png               # Ikon bendera Indonesia
+      ├── flag-kr.png               # Ikon bendera Korea Selatan
+      ├── 📁 byeong-yoon/
+      │    └── byeong-yoon.jpg      # Foto profil Bae Byeongyun
+      ├── 📁 jueun/
+      │    └── jueun.jpg            # Foto profil Lee Jueun
+      ├── 📁 soo-ah/
+      │    └── soo-ah.jpg           # Foto profil Kang Suah
+      └── 📁 dongkyun/
+           └── dongkyun.jpg         # Foto profil An Dongkyun
