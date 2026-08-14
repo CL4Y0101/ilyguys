@@ -5,18 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#05060b">
   <title>Until We Meet Again — Jember 2026</title>
-
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
-
-  <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Preloader & Overlay Elements -->
   <div id="loader">
     <div>JEMBER</div>
     <span></span>
@@ -25,7 +20,6 @@
   <div class="grain"></div>
   <div class="progress"><i></i></div>
 
-  <!-- Navigation -->
   <nav>
     <a href="#home" class="logo">JEMBER <b>·</b> 2026</a>
     <div class="nav-actions">
@@ -38,7 +32,6 @@
   </nav>
 
   <main>
-    <!-- Hero Section -->
     <section class="hero scene" id="home">
       <div class="hero-bg"></div>
       <div class="hero-shade"></div>
@@ -53,7 +46,6 @@
       <div class="hero-meta">JEMBER, INDONESIA <span>14 · 08 · 2026</span></div>
     </section>
 
-    <!-- Chapter 01: Intro -->
     <section class="chapter" id="chapter1">
       <div class="chapter-no">CHAPTER 01</div>
       <div class="two-col">
@@ -65,7 +57,6 @@
       </div>
     </section>
 
-    <!-- Chapter 02: People -->
     <section class="chapter people">
       <div class="chapter-no">CHAPTER 02</div>
       <div class="heading reveal">
@@ -122,7 +113,6 @@
       <p class="note" data-i18n="photoNote">Put their portraits in assets/photos/.</p>
     </section>
 
-    <!-- Chapter 03: Memories -->
     <section class="chapter">
       <div class="chapter-no">CHAPTER 03</div>
       <div class="heading reveal">
@@ -173,7 +163,6 @@
       </div>
     </section>
 
-    <!-- Chapter 04: Cinema / Video -->
     <section class="cinema">
       <video id="memoryVideo" muted loop playsinline poster="assets/photos/group/group.jpg">
         <source src="assets/video/memory.mp4" type="video/mp4">
@@ -187,7 +176,6 @@
       </div>
     </section>
 
-    <!-- Chapter 05: Distance -->
     <section class="chapter distance">
       <div class="chapter-no">CHAPTER 05</div>
       <div class="heading reveal">
@@ -216,7 +204,6 @@
       <blockquote class="reveal" data-i18n-html="distanceQuote"></blockquote>
     </section>
 
-    <!-- Chapter 06: Letters -->
     <section class="chapter letters">
       <div class="chapter-no">CHAPTER 06</div>
       <div class="heading reveal">
@@ -248,7 +235,6 @@
       </div>
     </section>
 
-    <!-- Chapter 07: Future -->
     <section class="chapter future">
       <div class="future-glow"></div>
       <div class="future-content reveal">
@@ -261,7 +247,6 @@
       </div>
     </section>
 
-    <!-- Final Section -->
     <section class="final">
       <div class="final-bg"></div>
       <div class="final-shade"></div>
@@ -277,31 +262,35 @@
     </section>
   </main>
 
-  <!-- Footer -->
   <footer>
     <span data-i18n="footer1">Made with memories, not code.</span>
     <span>JEMBER · 2026</span>
   </footer>
 
-  <!-- Modal -->
   <div class="modal" id="modal">
     <div class="modal-bg"></div>
     <div class="modal-box">
       <button id="close">×</button>
       <small data-i18n="letterFor">A LETTER FOR</small>
       <h2 id="modalName"></h2>
-      <div id="modalText"></div>
-      <em>— Aditya · Jember 2026</em>
+      
+      <div id="lockArea">
+        <p id="lockMsg">This letter is locked. Please enter your password.</p>
+        <input type="password" id="letterPw" placeholder="Password...">
+        <button id="unlockBtn">Unlock</button>
+        <p id="errorMsg" style="display: none;">Incorrect password.</p>
+      </div>
+
+      <div id="modalText" style="display: none;"></div>
+      <em id="modalSign" style="display: none;">— Aditya · Jember 2026</em>
     </div>
   </div>
 
-  <!-- Toast & Audio Player -->
   <div id="toast"></div>
   <audio id="audio" loop>
     <source src="assets/audio/memory.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- Script -->
   <script src="script.js"></script>
 </body>
 </html>

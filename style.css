@@ -1,6 +1,3 @@
-/* ==========================================================================
-   1. ROOT VARIABLES & RESET
-   ========================================================================== */
 :root {
   --serif: "Playfair Display", serif;
   --violet: #b9a6ec;
@@ -40,9 +37,6 @@ a {
   text-decoration: none;
 }
 
-/* ==========================================================================
-   2. OVERLAYS & PRELOADER
-   ========================================================================== */
 .grain {
   position: fixed;
   inset: 0;
@@ -99,9 +93,6 @@ body.ready #loader {
   visibility: hidden;
 }
 
-/* ==========================================================================
-   3. NAVIGATION & PROGRESS BAR
-   ========================================================================== */
 nav {
   position: fixed;
   z-index: 120;
@@ -176,9 +167,6 @@ nav {
   background: var(--violet);
 }
 
-/* ==========================================================================
-   4. HERO SECTION
-   ========================================================================== */
 .scene {
   height: 100vh;
   min-height: 550px;
@@ -271,9 +259,6 @@ nav {
   margin-left: 15px;
 }
 
-/* ==========================================================================
-   5. CHAPTER GENERAL LAYOUT
-   ========================================================================== */
 .chapter {
   padding: 90px 8vw;
   position: relative;
@@ -338,9 +323,6 @@ nav {
   letter-spacing: 0.1em;
 }
 
-/* ==========================================================================
-   6. PEOPLE SECTION
-   ========================================================================== */
 .people-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -417,9 +399,6 @@ nav {
   margin-top: 16px;
 }
 
-/* ==========================================================================
-   7. MEMORIES SECTION
-   ========================================================================== */
 .memories {
   max-width: 900px;
   margin: auto;
@@ -476,9 +455,6 @@ nav {
   filter: saturate(1);
 }
 
-/* ==========================================================================
-   8. CINEMA (VIDEO) SECTION
-   ========================================================================== */
 .cinema {
   height: 60vh;
   min-height: 420px;
@@ -529,9 +505,6 @@ nav {
   border-color: var(--violet);
 }
 
-/* ==========================================================================
-   9. DISTANCE & MAP SECTION
-   ========================================================================== */
 .map {
   max-width: 650px;
   margin: 35px auto 55px;
@@ -583,9 +556,6 @@ nav {
   margin: 0;
 }
 
-/* ==========================================================================
-   10. LETTERS SECTION
-   ========================================================================== */
 .letters {
   background: rgba(255, 255, 255, 0.015);
 }
@@ -620,9 +590,6 @@ nav {
 .letter b { font: 500 20px var(--serif); margin-top: auto; }
 .letter i { font-size: 9px; color: #777; margin-top: 10px; }
 
-/* ==========================================================================
-   11. FUTURE & FINAL SECTIONS
-   ========================================================================== */
 .future {
   padding: 100px 8vw;
   display: grid;
@@ -736,9 +703,6 @@ nav {
   background: rgba(185, 166, 236, 0.1);
 }
 
-/* ==========================================================================
-   12. FOOTER, MODAL & TOAST
-   ========================================================================== */
 footer {
   padding: 20px 5vw;
   border-top: 1px solid var(--line);
@@ -799,6 +763,51 @@ footer {
   margin: 6px 0 18px;
 }
 
+#lockArea {
+  margin: 20px 0;
+}
+
+#lockMsg {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+#letterPw {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  margin-bottom: 10px;
+}
+
+#letterPw:focus {
+  border-color: var(--violet);
+}
+
+#unlockBtn {
+  background: var(--violet);
+  color: var(--bg-dark);
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  width: 100%;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+}
+
+#errorMsg {
+  color: #ff6b6b;
+  font-size: 11px;
+  margin-top: 8px;
+}
+
 .modal-box #modalText {
   color: #aaa;
   line-height: 1.7;
@@ -846,9 +855,6 @@ footer {
   transform: none;
 }
 
-/* ==========================================================================
-   13. RESPONSIVE / MEDIA QUERIES (MOBILE COMPACT)
-   ========================================================================== */
 @media (max-width: 820px) {
   .chapter { padding: 60px 6vw; }
   .chapter-no { display: none; }

@@ -1,6 +1,3 @@
-/* ==========================================================================
-   1. TRANSLATION DATA (i18n)
-   ========================================================================== */
 const T = {
   en: {
     sound: "SOUND ON",
@@ -126,9 +123,6 @@ const T = {
   }
 };
 
-/* ==========================================================================
-   2. LETTERS DATA
-   ========================================================================== */
 const L = {
   byeong: {
     en: [
@@ -196,12 +190,17 @@ const L = {
   }
 };
 
-/* ==========================================================================
-   3. HELPERS & RENDERING
-   ========================================================================== */
+const passwords = {
+  donggyun: "adk",
+  byeong: "yoon",
+  jueun: "jueun",
+  sooah: "suah"
+};
+
 let lang = localStorage.getItem("memoryLang") || "en";
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => document.querySelectorAll(s);
+let currentPerson = "";
 
 function render() {
   const dict = T[lang];
@@ -222,13 +221,9 @@ function render() {
   });
 }
 
-/* ==========================================================================
-   4. INIT & EVENTS
-   ========================================================================== */
 function init() {
   render();
 
-  // Language Switch
   $$(".langs button").forEach((b) => {
     b.onclick = () => {
       lang = b.dataset.lang;
@@ -237,7 +232,6 @@ function init() {
     };
   });
 
-  // Images Auto Background Binding
   $$(".portrait").forEach((e) => {
     e.style.backgroundImage = `url("assets/photos/${e.dataset.photo}/${e.dataset.photo}.jpg")`;
   });
@@ -245,7 +239,6 @@ function init() {
     e.style.backgroundImage = `url("assets/photos/group/${e.dataset.photo}.jpg")`;
   });
 
-  // Reveal On Scroll
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((e) => {
@@ -256,7 +249,6 @@ function init() {
   );
   $$(".reveal").forEach((el) => observer.observe(el));
 
-  // Progress Bar
   window.addEventListener("scroll", () => {
     const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
     const pct = maxScroll > 0 ? (window.scrollY / maxScroll) * 100 : 0;
@@ -264,31 +256,56 @@ function init() {
     if (progressEl) progressEl.style.width = `${pct}%`;
   });
 
-  // Remove Loader Safely
   setTimeout(() => {
     document.body.classList.add("ready");
   }, 350);
 }
 
-// Check DOM ready
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", init);
 } else {
   init();
 }
 
-/* ==========================================================================
-   5. MODAL LOGIC
-   ========================================================================== */
 const modal = $("#modal");
 
 function openLetter(key) {
+  currentPerson = key;
   const data = L[key][lang];
+  
   $("#modalName").textContent = data[0];
-  $("#modalText").innerHTML = data[1];
+  
+  $("#lockArea").style.display = "block";
+  $("#letterPw").value = "";
+  $("#errorMsg").style.display = "none";
+  $("#modalText").style.display = "none";
+  $("#modalSign").style.display = "none";
+  
+  $("#lockMsg").textContent = lang === "ko" 
+    ? "이 편지는 잠겨 있습니다. 비밀번호를 입력해 주세요." 
+    : "This letter is locked. Please enter your password.";
+  $("#letterPw").placeholder = lang === "ko" ? "비밀번호..." : "Password...";
+  $("#unlockBtn").textContent = lang === "ko" ? "열기" : "Unlock";
+  
   modal.classList.add("open");
   document.body.style.overflow = "hidden";
 }
+
+$("#unlockBtn").onclick = () => {
+  const input = $("#letterPw").value.toLowerCase().trim();
+  
+  if (input === passwords[currentPerson]) {
+    $("#lockArea").style.display = "none";
+    $("#modalText").innerHTML = L[currentPerson][lang][1];
+    $("#modalText").style.display = "block";
+    $("#modalSign").style.display = "block";
+  } else {
+    $("#errorMsg").textContent = lang === "ko" 
+      ? "비밀번호가 틀렸습니다." 
+      : "Incorrect password.";
+    $("#errorMsg").style.display = "block";
+  }
+};
 
 function closeLetter() {
   modal.classList.remove("open");
@@ -302,9 +319,6 @@ $$("[data-person]").forEach((el) => {
 $("#close").onclick = closeLetter;
 $(".modal-bg").onclick = closeLetter;
 
-/* ==========================================================================
-   6. AUDIO, VIDEO & TOAST
-   ========================================================================== */
 const audio = $("#audio");
 $("#soundBtn").onclick = async () => {
   if (audio.paused) {
